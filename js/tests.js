@@ -28,12 +28,66 @@ describe('Test de reserva de horarios', () => {
 
     });
 
-    describe('Test de puntuacion', () => {
-        it('Promedio calificaciones correcto', () => {
-            expect(listado.restaurantes[0].obtenerPuntuacion()).to.equal(7.4);
-        });
-        it('Sin calificaciones', () => {
-            expect(listado.restaurantes[24].obtenerPuntuacion()).to.equal(0);
-        });
 });
+
+describe('Test de puntuacion', () => {
+    it('Promedio calificaciones correcto', () => {
+        expect(listado.restaurantes[0].obtenerPuntuacion()).to.equal(7.4);
+    });
+    it('Sin calificaciones', () => {
+        expect(listado.restaurantes[24].obtenerPuntuacion()).to.equal(0);
+    });
 });
+
+
+describe('Funcion calificar', () => {
+    it('Valor de calificacion negativo', () => {
+        listado.restaurantes[24].calificar(-1);
+        expect(listado.restaurantes[24].calificaciones.length).to.equal(0);
+    });
+
+    it('Valor de calificacion menor a 10', () => {
+        listado.restaurantes[24].calificar(11);
+        expect(listado.restaurantes[24].calificaciones.length).to.equal(0);
+    });
+
+    it('Valor de calificacion vacío', () => {
+        listado.restaurantes[24].calificar();
+        expect(listado.restaurantes[24].calificaciones.length).to.equal(0);
+    });
+
+    it('Valor de calificacion correcto', () => {
+        listado.restaurantes[24].calificar(2);
+        expect(listado.restaurantes[24].calificaciones.length).to.equal(1);
+    });
+    
+});
+
+    
+    
+describe('Funcion buscar restaurant', () => {
+    it('Buscar restaurant por id', () => {
+        expect(listado.buscarRestaurante(1).id).to.equal(1);
+    });
+    it('Id de restaurante inexistente', () => {
+        expect(listado.buscarRestaurante(28).id).to.equal();
+    });
+
+});
+describe('Funcion obtener restaurants', () => {
+    it('Filtrar restaurantes por Rubro', () => {
+        expect(listado.obtenerRestaurantes('Ensalada',null,null).length).to.equal(4);
+    });
+    it('Filtrar restaurantes por Ciudad', () => {
+        expect(listado.obtenerRestaurantes(null,'París',null).length).to.equal(6);
+    });
+    it('Filtrar restaurantes por Horario', () => {
+        expect(listado.obtenerRestaurantes(null, null, '13:00').length).to.equal(3);
+    });
+});
+        
+   
+
+    
+
+
