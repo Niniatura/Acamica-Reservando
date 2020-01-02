@@ -12,9 +12,9 @@ Aplicacion.prototype.registrarEventos = function() {
 
 //Esta función llama a las funciones que se encargan de cargar las opciones de los filtros
 Aplicacion.prototype.dibujarFiltros = function() {
-    this.dibujarHorarios();
-    this.dibujarRubros();
-    this.dibujarCiudades();
+    this.obtenerHorarios();
+    this.obtenerRubros();
+    this.obtenerCiudades();
 
 }
 
@@ -139,24 +139,24 @@ Aplicacion.prototype.reservarUnHorario = function(restaurant, horario) {
 }
 
 //Esta función se encarga de generar las opciones del filtro de las ciudades.
-Aplicacion.prototype.dibujarCiudades = function() {
+Aplicacion.prototype.obtenerCiudades = function() {
     $("#filtro-ciudad").empty();
     this.cargarOpcionDefault("filtro-ciudad", "Ciudad");
     this.cargarOpcionTodos("filtro-ciudad");
 
-    this.listado.obtC().forEach(function(ciudad) {
+    this.listado.obtenerCiudades().forEach(function(ciudad) {
         var nuevaOpcion = $("<option/>").text(ciudad).val(ciudad);
         nuevaOpcion.appendTo("#filtro-ciudad");
     });
 }
 
 //Esta función se encarga de generar las opciones del filtro de rubros.
-Aplicacion.prototype.dibujarRubros = function() {
+Aplicacion.prototype.obtenerRubros = function() {
     $("#filtro-rubro").empty();
     this.cargarOpcionDefault("filtro-rubro", "Rubro");
     this.cargarOpcionTodos("filtro-rubro")
 
-    this.listado.obtR().forEach(function(rubro) {
+    this.listado.obtenerRubros().forEach(function(rubro) {
         var nuevaOpcion = $("<option/>").text(rubro).val(rubro);
         nuevaOpcion.appendTo("#filtro-rubro");
     });
@@ -164,12 +164,12 @@ Aplicacion.prototype.dibujarRubros = function() {
 }
 
 //Esta función se encarga de generar las opciones del filtro de horarios.
-Aplicacion.prototype.dibujarHorarios = function() {
+Aplicacion.prototype.obtenerHorarios = function() {
     $("#filtro-horario").empty();
     this.cargarOpcionDefault("filtro-horario", "Horario");
     this.cargarOpcionTodos("filtro-horario")
 
-    this.listado.obtH().forEach(function(horario) {
+    this.listado.obtenerHorarios().forEach(function(horario) {
         var nuevaOpcion = $("<option/>").text(horario).val(horario);
         nuevaOpcion.appendTo("#filtro-horario");
     });
