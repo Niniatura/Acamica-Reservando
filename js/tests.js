@@ -67,7 +67,7 @@ describe('Funcion calificar', () => {
     
 describe('Funcion buscar restaurant', () => {
     it('Buscar restaurant por id', () => {
-        expect(listado.buscarRestaurante(1).id).to.equal(1);
+        expect(listado.buscarRestaurante(2).id).to.equal(2);
     });
     it('Id de restaurante inexistente', () => {
         expect(listado.buscarRestaurante(28).id).to.equal();

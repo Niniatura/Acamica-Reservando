@@ -17,14 +17,16 @@ Listado.prototype.calificarRestaurant = function(id, calificacion) {
 }
 
 //Dado un id, busca el objeto del listado que tiene ese id
-Listado.prototype.buscarRestaurante = function(id) {
-    for (var i = 0; i < this.restaurantes.length; i++) {
-        if (this.restaurantes[i].id === id) {
-            return this.restaurantes[i]
-        }
+Listado.prototype.buscarRestaurante = function (id) {
+    
+    const restaurantBuscado = this.restaurantes.find((resto) => resto.id === id);
+    if (restaurantBuscado) {
+        
+        return restaurantBuscado;
     }
     return "No se ha encontrado ningún restaurant";
 }
+
 
 eliminarRepeticiones = (varios) => {
     return varios.filter((elem,index,self) => {return index === self.indexOf(elem)});
