@@ -34,27 +34,17 @@ eliminarRepeticiones = (varios) => {
 
 //Obtiene todas las ciudades de los restaurantes sin repetidos
 Listado.prototype.obtenerCiudades = function() {
-    //Array donde se van a ir agregando las ciudades (van a estar repetidas)
-    
-    //Se recorre el array de restaurantes y se va agregando al array creado, todas las ubicaciones o ciudades encontradas
-    // for (var i = 0; i < this.restaurantes.length; i++) {
-    //     ciudades.push(this.restaurantes[i].ubicacion);
-    // }
-    
+
     const ciudades = this.restaurantes.map((resto) => resto.ubicacion);
-    //Se crea un nuevo array donde se van a agregar las ciudades pero sin repetirse
    
     return eliminarRepeticiones(ciudades);
 }
 
 //Obtiene todos los rubros de los restaurantes sin repetidos. Su funcionamiento es similar a obtC()
 Listado.prototype.obtenerRubros = function() {
-    // var rubros = [];
-    // for (var i = 0; i < this.restaurantes.length; i++) {
-    //     rubros.push(this.restaurantes[i].rubro);
-    // }
-
+    
     const rubros = this.restaurantes.map((resto) => resto.rubro);
+
     return eliminarRepeticiones(rubros);
 }
 
@@ -63,13 +53,7 @@ Listado.prototype.obtenerRubros = function() {
 //convertir en uno solo
 Listado.prototype.obtenerHorarios = function() {
     //En este array se van a cargar los arrays de horarios, que luego vamos convertir en un solo array
-    // var arregloHorarios = [];
-    // //Recorremos el array de restaurantes y vamos agregando todos los array de horarios
-    // for (var i = 0; i < this.restaurantes.length; i++) {
-    //     arregloHorarios.push(this.restaurantes[i].horarios);
-    // }
     const arregloHorarios = this.restaurantes.map((resto) => resto.horarios);
-
 
     //En este arreglo vamos a poner todos los horarios, uno por uno
     var horarioIndividual = [];
@@ -78,8 +62,6 @@ Listado.prototype.obtenerHorarios = function() {
             horarioIndividual.push(horario)
         });
     });
-
-    //En este arreglo vamos a poner todos los horarios pero sin repetidos
 
     return eliminarRepeticiones(horarioIndividual);
 }
