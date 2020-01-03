@@ -86,7 +86,13 @@ describe('Funcion obtener restaurants', () => {
     });
 });
         
-   
+describe('Funciones TDD', () => {
+    it('Funcion obtener el precio de la reserva', () => {
+        expect(listadoDeReservas[0].precioBaseReserva()).to.equal(2800);
+    });
+
+    
+});  
 
     
 
