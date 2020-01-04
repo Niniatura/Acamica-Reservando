@@ -91,9 +91,18 @@ describe('Funciones TDD', () => {
         expect(listadoDeReservas[0].precioBase()).to.equal(2800);
     });
 
-    it('Funcion obtener el precio final de la reserva con descuentos', () => {
-        expect(listadoDeReservas[0].precioFinal()).to.equal(2170);
+    it('Funcion obtener el precio final de la reserva con descuentos por grupo', () => {
+        expect(listadoDeReservas[3].precioFinal()).to.equal(945);
     });
+
+    it('Funcion obtener el precio final de la reserva con codigo', () => {
+        expect(listadoDeReservas[1].precioFinal()).to.equal(100);
+    });
+
+    it('Funcion obtener el precio final de la reserva con adicional fin de semana', () => {
+        expect(listadoDeReservas[2].precioFinal()).to.equal(550);
+    });
+
     
 });  
 
