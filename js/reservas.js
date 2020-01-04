@@ -13,7 +13,7 @@ Reserva.prototype.precioBase = function (cantPersonas, precioPorPersona) {
 
 Reserva.prototype.precioFinal = function () {
     var precioBase = this.precioBase();
-    var adicionales = this.calcularAdicionalFinde(precioBase);
+    var adicionales = this.calcularAdicionalFinde(precioBase) + this.calcularAdicionalHorario(precioBase);
     var descuentos = this.calcularDescuentosPorGrupo(precioBase) + this.calcularDescuentosPorCodigo(precioBase);
     return precioBase  - descuentos + adicionales;
     
@@ -46,6 +46,18 @@ Reserva.prototype.calcularDescuentosPorCodigo = function (base) {
     return descuento;
 }
 
+Reserva.prototype.calcularAdicionalHorario = function (base) {
+    var horas = this.horario.getHours();
+    var adicionalHorario = 0;
+    if (horas >= 13 && horas <= 14 || horas >= 20 && horas <= 21) {
+        adicionalHorario = base * 5 / 100;
+    } else {
+        adicionalHorario = 0;
+    }
+    return adicionalHorario;
+}
+
+
 Reserva.prototype.calcularAdicionalFinde = function (base) {
     var dia = this.horario.getDay();
     
@@ -66,6 +78,7 @@ new Reserva(new Date(2018, 7, 24, 11, 00), 8, 350, "DES1"),
 new Reserva(new Date(2018, 7, 27, 14, 100), 2, 150, "DES200"),
 new Reserva(new Date(2018, 7, 24, 11, 00), 2, 250),
 new Reserva(new Date(2018, 7, 30, 11, 00), 7, 150),
+new Reserva(new Date(2018, 7, 2, 13, 00), 2, 300),
 
 ];
 

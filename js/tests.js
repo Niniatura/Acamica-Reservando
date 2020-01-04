@@ -46,7 +46,7 @@ describe('Funcion calificar', () => {
         expect(listado.restaurantes[24].calificaciones.length).to.equal(0);
     });
 
-    it('Valor de calificacion menor a 10', () => {
+    it('Valor de calificacion mayor a 10', () => {
         listado.restaurantes[24].calificar(11);
         expect(listado.restaurantes[24].calificaciones.length).to.equal(0);
     });
@@ -103,6 +103,9 @@ describe('Funciones TDD', () => {
         expect(listadoDeReservas[2].precioFinal()).to.equal(550);
     });
 
+    it('Funcion obtener el precio final de la reserva con adicional de horario', () => {
+        expect(listadoDeReservas[4].precioFinal()).to.equal(630);
+    });
     
 });  
 
