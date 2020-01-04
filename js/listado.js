@@ -27,7 +27,8 @@ Listado.prototype.buscarRestaurante = function (id) {
     return "No se ha encontrado ningún restaurant";
 }
 
-
+//Filtra el arreglo de elementos para que solo se devuelvan los elementos que no son iguales 
+//al item que se recibió por parámetro
 eliminarRepeticiones = (varios) => {
     return varios.filter((elem,index,self) => {return index === self.indexOf(elem)});
 }

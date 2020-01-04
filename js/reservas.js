@@ -1,16 +1,20 @@
+//Modelado del objeto reserva
 var Reserva = function (horario, cantPersonas, precioPorPersona, codigoDeDescuento) {
     this.horario = horario,
     this.cantPersonas = cantPersonas,
     this.precioPorPersona = precioPorPersona,
     this.codigoDeDescuento = codigoDeDescuento
-
+    
 }
 
+//Calculo del precio base de una reserva
 Reserva.prototype.precioBase = function (cantPersonas, precioPorPersona) {
+    
     return this.cantPersonas * this.precioPorPersona;
 
 } 
 
+//Calcula el precio final de una reserva
 Reserva.prototype.precioFinal = function () {
     var precioBase = this.precioBase();
     var adicionales = this.calcularAdicionalFinde(precioBase) + this.calcularAdicionalHorario(precioBase);
@@ -19,7 +23,7 @@ Reserva.prototype.precioFinal = function () {
     
 }
 
-
+//Calcula el descuento por cantidad de personas o grupos grandes
 Reserva.prototype.calcularDescuentosPorGrupo = function (base) {
     var descuento = 0;
 
@@ -33,7 +37,7 @@ Reserva.prototype.calcularDescuentosPorGrupo = function (base) {
     return base * descuento / 100;
 }
 
-
+//Calcula el descuento por codigo de descuento asociado
 Reserva.prototype.calcularDescuentosPorCodigo = function (base) {
     var descuento = 0;
     if (this.codigoDeDescuento == "DES15") {
@@ -46,6 +50,7 @@ Reserva.prototype.calcularDescuentosPorCodigo = function (base) {
     return descuento;
 }
 
+//Adicional por franjas horarias
 Reserva.prototype.calcularAdicionalHorario = function (base) {
     var horas = this.horario.getHours();
     var adicionalHorario = 0;
@@ -57,7 +62,7 @@ Reserva.prototype.calcularAdicionalHorario = function (base) {
     return adicionalHorario;
 }
 
-
+//Adicional por dias de fin de semana
 Reserva.prototype.calcularAdicionalFinde = function (base) {
     var dia = this.horario.getDay();
     

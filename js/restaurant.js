@@ -32,12 +32,14 @@ Restaurant.prototype.obtenerPuntuacion = function () {
     return promedio(this.calificaciones);
 }
 
-function sumatoria(numeros) {
+//Recibe un arreglo de numeros y devuelve su sumatoria
+sumatoria = (numeros) => {
     return numeros.reduce(function (acumulador, siguienteValor) {
         return acumulador + siguienteValor;
     }, 0);
 }
 
-function promedio(arrayApromediar) {
+//Suma los elementos de un arreglo y luego calcula su promedio
+promedio = (arrayApromediar) => {
     return (sumatoria(arrayApromediar)) / arrayApromediar.length;
 }
